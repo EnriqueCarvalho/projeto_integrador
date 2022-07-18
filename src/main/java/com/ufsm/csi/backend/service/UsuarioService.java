@@ -2,7 +2,6 @@ package com.ufsm.csi.backend.service;
 
 import com.ufsm.csi.backend.model.Usuario;
 import com.ufsm.csi.backend.repository.UsuarioRepository;
-import org.apache.catalina.LifecycleState;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +13,6 @@ public class UsuarioService {
 
     @Autowired
     private final UsuarioRepository usuarioRepository;
-
     public UsuarioService(UsuarioRepository usuarioRepository) {
         this.usuarioRepository = usuarioRepository;
     }
@@ -47,22 +45,12 @@ public class UsuarioService {
     }
 
     public Optional<Usuario> getUsuarioById(Integer id){
-
         Optional<Usuario> usuario = this.usuarioRepository.findById(id);
-
-
         return usuario;
     }
 
     public Usuario desativarConta(Usuario u){
-
        this.usuarioRepository.save(u);
-
-
         return null;
     }
-
-
-
-
 }
