@@ -2,6 +2,7 @@ package com.ufsm.csi.backend.service;
 
 import com.ufsm.csi.backend.model.Usuario;
 import com.ufsm.csi.backend.repository.UsuarioRepository;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +21,8 @@ public class UsuarioService {
 
     public Usuario cadastrarUsuario(Usuario u){
 
+        u.setSenha(DigestUtils.sha256Hex(u.getSenha()));
+
         if(u.getTipo().isEmpty()){
             u.setTipo("C");
         }
@@ -30,6 +33,8 @@ public class UsuarioService {
     }
 
     public Usuario login(Usuario u){
+
+        u.setSenha(DigestUtils.sha256Hex(u.getSenha())) ;
 
         Usuario usuario = this.usuarioRepository.findByLoginAndSenha(u.getLogin());
 
@@ -45,12 +50,24 @@ public class UsuarioService {
     }
 
     public Optional<Usuario> getUsuarioById(Integer id){
+
+
         Optional<Usuario> usuario = this.usuarioRepository.findById(id);
+        usuario.get().setSenha("");
+        return usuario;
+    }
+
+    public Usuario getUsuarioByCpf(String cpf){
+        Usuario usuario = this.usuarioRepository.findByCpf(cpf);
         return usuario;
     }
 
     public Usuario desativarConta(Usuario u){
        this.usuarioRepository.save(u);
         return null;
+    }
+
+    public void tornaFuncionario(Integer idUsuario){
+        this.usuarioRepository.tornaFuncionario(idUsuario);
     }
 }

@@ -6,6 +6,8 @@ import com.ufsm.csi.backend.repository.QuadraRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class QuadraService {
 
@@ -15,6 +17,10 @@ public class QuadraService {
 
     public Quadra getQuadra(Integer idUsuario){
         return this.quadraRepository.getQuadraByUsuario(idUsuario);
+    }
+
+    public Optional<Quadra> getQuadraById(Integer idQuadra){
+        return this.quadraRepository.findById(idQuadra);
     }
 
     public Quadra salvarQuadra(Quadra quadra){
