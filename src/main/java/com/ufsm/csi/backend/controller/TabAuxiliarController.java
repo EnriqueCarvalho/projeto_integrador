@@ -65,4 +65,19 @@ public class TabAuxiliarController {
             );
         }
     }
+
+    @CrossOrigin
+    @GetMapping("/visualizar-tabaux")
+    public List<TabAuxiliar> getHorariosDisp(@ModelAttribute("codTab") String codTab,
+                                              @ModelAttribute("idEspaco") String idEspaco,
+                                              @ModelAttribute("data") String data){
+        try{
+            return this.tabAuxiliarService.getHorariosDisp(Integer.parseInt(codTab),Integer.parseInt(idEspaco),data);
+
+        }catch (Exception e ){
+            throw new ResponseStatusException(
+                    HttpStatus.BAD_REQUEST, e.getMessage()
+            );
+        }
+    }
 }

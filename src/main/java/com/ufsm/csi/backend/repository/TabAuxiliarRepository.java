@@ -17,4 +17,10 @@ public interface TabAuxiliarRepository extends JpaRepository<TabAuxiliar, Intege
     List<TabAuxiliar> getTabAuxiliar(   @Param("idQuadra") Integer idQuadra,
                                         @Param("codTab") Integer codTab
     );
+
+    @Query(value = "select * from tab_auxiliar tab where tab.cod_tab = :codTab and tab.item_tab <> 0 and tab.valor_alfa not in(select r.hora as valor from reserva r where  r.id_espaco = :idEspaco and r.data = :data and r.motivo_cancel is null)", nativeQuery = true)
+    List<TabAuxiliar> getHorariosDisp(  @Param("codTab") Integer codTab,
+                                        @Param("idEspaco") Integer idEspaco,
+                                        @Param("data") String data
+    );
 }

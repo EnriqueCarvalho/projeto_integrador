@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.List;
+
 @RestController
 public class QuadraController {
 
@@ -22,6 +24,21 @@ public class QuadraController {
         try{
             System.out.println("Buscando quadra para o usuario : "+idUsuario);
             return this.quadraService.getQuadra(Integer.parseInt(idUsuario));
+
+        }catch (Exception e ){
+            throw new ResponseStatusException(
+                    HttpStatus.BAD_REQUEST, e.getMessage()
+            );
+        }
+    }
+
+    @CrossOrigin
+    @GetMapping("/visualizar-quadras")
+    public List<Quadra> visualizarQuadras(){
+
+        try{
+            System.out.println("Buscando quadras ");
+            return this.quadraService.getQuadras();
 
         }catch (Exception e ){
             throw new ResponseStatusException(

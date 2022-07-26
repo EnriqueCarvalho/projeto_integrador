@@ -29,4 +29,8 @@ public class TabAuxiliarService {
     public void deletarItemTabAux(TabAuxiliar tabAuxiliar){
         this.tabAuxiliarRepository.delete(tabAuxiliar);
     }
+
+    public List<TabAuxiliar> getHorariosDisp(Integer codTab,Integer idEspaco, String data){
+        return this.tabAuxiliarRepository.getHorariosDisp(codTab,idEspaco,data);
+    }
 }
