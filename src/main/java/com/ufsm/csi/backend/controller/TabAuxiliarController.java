@@ -67,11 +67,13 @@ public class TabAuxiliarController {
     }
 
     @CrossOrigin
-    @GetMapping("/visualizar-tabaux")
+    @GetMapping("/visualizar-horarios")
     public List<TabAuxiliar> getHorariosDisp(@ModelAttribute("codTab") String codTab,
                                               @ModelAttribute("idEspaco") String idEspaco,
                                               @ModelAttribute("data") String data){
         try{
+            System.out.println(codTab + " | "+idEspaco+ " | "+data);
+            System.out.println("Buscando horários");
             return this.tabAuxiliarService.getHorariosDisp(Integer.parseInt(codTab),Integer.parseInt(idEspaco),data);
 
         }catch (Exception e ){

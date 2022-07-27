@@ -31,6 +31,7 @@ public class TabAuxiliarService {
     }
 
     public List<TabAuxiliar> getHorariosDisp(Integer codTab,Integer idEspaco, String data){
+        System.out.println(codTab + " | "+idEspaco+ " | "+data);
         return this.tabAuxiliarRepository.getHorariosDisp(codTab,idEspaco,data);
     }
 }

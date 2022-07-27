@@ -66,4 +66,16 @@ public class Espaco {
     public void setValor(float valor) {
         this.valor = valor;
     }
+
+    @Override
+    public String toString() {
+        return "Espaco{" +
+                "id=" + id +
+                ", quadra=" + quadra +
+                ", nome='" + nome + '\'' +
+                ", qtdMax=" + qtdMax +
+                ", descricao='" + descricao + '\'' +
+                ", valor=" + valor +
+                '}';
+    }
 }

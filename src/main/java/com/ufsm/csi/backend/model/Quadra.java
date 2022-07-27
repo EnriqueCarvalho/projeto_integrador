@@ -73,4 +73,17 @@ public class Quadra {
     public void setNroEnd(String nroEnd) {
         this.nroEnd = nroEnd;
     }
+
+    @Override
+    public String toString() {
+        return "Quadra{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", cnpj='" + cnpj + '\'' +
+                ", cep='" + cep + '\'' +
+                ", ruaEnd='" + ruaEnd + '\'' +
+                ", bairroEnd='" + bairroEnd + '\'' +
+                ", nroEnd='" + nroEnd + '\'' +
+                '}';
+    }
 }

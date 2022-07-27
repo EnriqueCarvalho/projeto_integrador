@@ -76,4 +76,17 @@ public class Reserva {
     public void setEspaco(Espaco espaco) {
         this.espaco = espaco;
     }
+
+    @Override
+    public String toString() {
+        return "Reserva{" +
+                "id=" + id +
+                ", data='" + data + '\'' +
+                ", hora='" + hora + '\'' +
+                ", dataCancel='" + dataCancel + '\'' +
+                ", motivoCancel='" + motivoCancel + '\'' +
+                ", usuario=" + usuario +
+                ", espaco=" + espaco +
+                '}';
+    }
 }

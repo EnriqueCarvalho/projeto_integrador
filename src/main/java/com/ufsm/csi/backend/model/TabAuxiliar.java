@@ -64,4 +64,16 @@ public class TabAuxiliar {
     public void setQuadra(Quadra quadra) {
         this.quadra = quadra;
     }
+
+    @Override
+    public String toString() {
+        return "TabAuxiliar{" +
+                "id=" + id +
+                ", valorAlfa='" + valorAlfa + '\'' +
+                ", valorNum=" + valorNum +
+                ", itemTab=" + itemTab +
+                ", codTab=" + codTab +
+                ", quadra=" + quadra +
+                '}';
+    }
 }

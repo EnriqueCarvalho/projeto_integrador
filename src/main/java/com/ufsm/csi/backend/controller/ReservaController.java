@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
+import java.util.Optional;
 
 import static java.lang.Integer.parseInt;
 
@@ -17,6 +18,24 @@ public class ReservaController {
 
     @Autowired
     private ReservaService reservaService;
+
+
+    @CrossOrigin
+    @GetMapping("/visualizar-reserva")
+    public Optional<Reserva> getReservaById(@ModelAttribute("idReserva") String idReserva){
+
+        try{
+            Integer id = Integer.parseInt(idReserva.replaceAll("id:",""));
+            Optional<Reserva> reserva = this.reservaService.getReservaById(id);
+            System.out.println("Buscando reserva: "+reserva.toString());
+            return reserva;
+        }catch (Exception e ){
+            System.out.println("Erro: "+ e.getMessage());
+            throw new ResponseStatusException(
+                    HttpStatus.BAD_REQUEST, "Não foi possível buscar as reservas"
+            );
+        }
+    }
 
 
     @CrossOrigin
@@ -47,6 +66,21 @@ public class ReservaController {
             System.out.println("Erro: "+ e.getMessage());
             throw new ResponseStatusException(
                     HttpStatus.BAD_REQUEST, "Não foi possível buscar as reservas"
+            );
+        }
+    }
+
+    @CrossOrigin
+    @PostMapping("/cadastrar-reserva")
+    public Reserva cadastrarReserva(@RequestBody Reserva reserva){
+        try{
+            Reserva reservas = this.reservaService.cadastrarReserva(reserva);
+            System.out.println("Cadastrando reserva "+ reserva.toString());
+            return reservas;
+        }catch (Exception e ){
+            System.out.println("Erro: "+ e.getMessage());
+            throw new ResponseStatusException(
+                    HttpStatus.BAD_REQUEST, "Não foi possível cadastrar a reserva"
             );
         }
     }
