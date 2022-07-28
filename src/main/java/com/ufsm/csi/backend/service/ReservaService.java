@@ -5,6 +5,8 @@ import com.ufsm.csi.backend.repository.ReservaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,5 +35,10 @@ public class ReservaService {
         return this.reservaRepository.save(reserva);
     }
 
+    public Reserva excluirReserva(Reserva reserva){
+
+        reserva.setDataCancel(new GregorianCalendar().getTime().toString());
+        return this.reservaRepository.save(reserva);
+    }
 
 }

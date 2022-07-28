@@ -85,6 +85,21 @@ public class ReservaController {
         }
     }
 
+    @CrossOrigin
+    @PutMapping("/excluir-reserva")
+    public Reserva excluirReserva(@RequestBody Reserva reserva){
+        try{
+            Reserva reservas = this.reservaService.excluirReserva(reserva);
+            System.out.println("Excluindo reserva "+ reserva.toString());
+            return reservas;
+        }catch (Exception e ){
+            System.out.println("Erro: "+ e.getMessage());
+            throw new ResponseStatusException(
+                    HttpStatus.BAD_REQUEST, "Não foi possível excluir a reserva"
+            );
+        }
+    }
+
 
 
 }
