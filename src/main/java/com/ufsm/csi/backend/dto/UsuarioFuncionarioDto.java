@@ -14,6 +14,9 @@ public class UsuarioFuncionarioDto {
     private String ativo;
     private Integer idQuadra;
     private Integer idFuncionario;
+    private String token;
+
+
 
     public Integer getId() {
         return id;
@@ -85,5 +88,30 @@ public class UsuarioFuncionarioDto {
 
     public void setIdFuncionario(Integer idFuncionario) {
         this.idFuncionario = idFuncionario;
+    }
+
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    @Override
+    public String toString() {
+        return "UsuarioFuncionarioDto{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", email='" + email + '\'' +
+                ", fone='" + fone + '\'' +
+                ", tipo='" + tipo + '\'' +
+                ", cpf='" + cpf + '\'' +
+                ", ativo='" + ativo + '\'' +
+                ", idQuadra=" + idQuadra +
+                ", idFuncionario=" + idFuncionario +
+                ", token='" + token + '\'' +
+                '}';
     }
 }

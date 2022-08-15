@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UsuarioService {
+public class UsuarioService implements UsuarioServiceInterface {
 
     @Autowired
     private final UsuarioRepository usuarioRepository;
@@ -19,6 +19,7 @@ public class UsuarioService {
     }
 
 
+    @Override
     public Usuario cadastrarUsuario(Usuario u){
 
         u.setSenha(DigestUtils.sha256Hex(u.getSenha()));
@@ -32,9 +33,10 @@ public class UsuarioService {
         return usuario;
     }
 
+    @Override
     public Usuario login(Usuario u){
 
-        u.setSenha(DigestUtils.sha256Hex(u.getSenha())) ;
+
 
         Usuario usuario = this.usuarioRepository.findByLoginAndSenha(u.getLogin());
 
@@ -49,6 +51,7 @@ public class UsuarioService {
         return null;
     }
 
+    @Override
     public Optional<Usuario> getUsuarioById(Integer id){
 
 
@@ -57,16 +60,26 @@ public class UsuarioService {
         return usuario;
     }
 
+    @Override
+    public Usuario getUsuarioByLogin(String login){
+        Usuario usuario = this.usuarioRepository.findByLogin(login);
+        usuario.setSenha("");
+        return usuario;
+    }
+
+    @Override
     public Usuario getUsuarioByCpf(String cpf){
         Usuario usuario = this.usuarioRepository.findByCpf(cpf);
         return usuario;
     }
 
+    @Override
     public Usuario desativarConta(Usuario u){
        this.usuarioRepository.save(u);
         return null;
     }
 
+    @Override
     public void tornaFuncionario(Integer idUsuario){
         this.usuarioRepository.tornaFuncionario(idUsuario);
     }

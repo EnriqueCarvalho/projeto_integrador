@@ -36,8 +36,6 @@ public class ReservaService {
     }
 
     public Reserva excluirReserva(Reserva reserva){
-
-        reserva.setDataCancel(new GregorianCalendar().getTime().toString());
         return this.reservaRepository.save(reserva);
     }
 

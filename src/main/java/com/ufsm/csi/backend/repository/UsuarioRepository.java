@@ -15,6 +15,9 @@ public interface UsuarioRepository extends JpaRepository<Usuario,Integer> {
     @Query(value = "SELECT * FROM USUARIO U WHERE U.LOGIN = ? AND ATIVO = 'S'", nativeQuery = true)
     Usuario findByLoginAndSenha(@Param("login") String login);
 
+    @Query(value = "SELECT * FROM USUARIO U WHERE U.LOGIN = ? AND ATIVO = 'S'", nativeQuery = true)
+    Usuario findByLogin(@Param("login") String login);
+
     @Query(value = "SELECT * FROM USUARIO U WHERE U.CPF = ? AND ATIVO = 'S'", nativeQuery = true)
     Usuario findByCpf(@Param("login") String cpf);
 

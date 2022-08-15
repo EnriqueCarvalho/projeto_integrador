@@ -19,6 +19,8 @@ public class Usuario {
     private String senha;
     private String ativo;
 
+    private String token;
+
     public Integer getId() {
         return id;
     }
@@ -90,4 +92,30 @@ public class Usuario {
     public void setAtivo(String ativo) {
         this.ativo = ativo;
     }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", email='" + email + '\'' +
+                ", fone='" + fone + '\'' +
+                ", tipo='" + tipo + '\'' +
+                ", cpf='" + cpf + '\'' +
+                ", login='" + login + '\'' +
+                ", senha='" + senha + '\'' +
+                ", ativo='" + ativo + '\'' +
+                ", token='" + token + '\'' +
+                '}';
+    }
+
+
 }
